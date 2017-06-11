@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hot Dog or Not</title>
+	<meta charset="UTF-8">
+	<meta name="author" content="Wayne Cheng">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Google Font Links -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet"> -->
+	<!-- <link href="https://fonts.googleapis.com/css?family=Cutive+Mono" rel="stylesheet"> -->
+	<!-- Materialize CSS -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+	<!-- <link rel="stylesheet" href="src/css/materialize-color-overrides.css"> -->
+	<link rel="stylesheet" href="src/css/materialize-color-overrides-dark-theme.css">
+	<!-- <link rel="stylesheet" href="src/css/materialize-override-lib.css"> -->
+	<!-- <link rel="stylesheet" href="src/css/materialize-wayne.css"> -->
+	<link rel="stylesheet" href="src/css/style.css">
+	<style>
+	</style>
+</head>
+
+<body>
+<!--=============================================-->
+<div class="row display result">
+	<h2 id="result"></h2>
+</div>
+
+<!--=============================================-->
+<div class="query img-canvas">
+	<h2 id="title">Hot Dog or Not?</h2>
+</div>
+<!--=============================================-->
+<div class="row form">
+		 <!-- <a id="submit" class="frozen top-right spillover btn-round btn-large waves-effect waves-light red"><i class="material-icons">send</i></a> -->
+	<form class="col s12">
+		<div class="row">
+			<div id="url-field" class="input-field col s12 m8 offset-m2 l6 offset-l3">
+				<input id="url_in" type="text" class="imgInput validate">
+				<label for="url_in">Image URL</label>
+			</div>
+		</div>
+		<div class="row">
+			<div id="file-field" class="file-field input-field col s12 m8 offset-m2 l6 offset-l3">
+				<div class="btn">
+					<span>File</span>
+					<input id="file_in" class="imgInput" type="file">
+				</div>
+				<div class="file-path-wrapper">
+					<input id="file_path" class="imgInput file-path validate" type="text">
+				</div>
+			</div>
+		</div>
+		<div class="row btn-row">
+			
+			 <a id="useCamera" class="selectInputType btn-round btn waves-effect waves-light selected" data-type="camera">
+			 	<i class="material-icons">camera_alt</i>
+			 	</a>
+			 <a id="useURL" class="selectInputType btn-round btn waves-effect waves-light" data-type="url"><i class="material-icons">link</i></a>
+			 <a id="useFile" class="selectInputType btn-round btn waves-effect waves-light" data-type="file"><i class="material-icons">image</i></a>
+			 <a id="submit" class="btn-round btn waves-effect waves-light"><i class="material-icons">send</i></a>
+		</div>
+			<!-- <div class="input-field col s2 offset-s5">
+				<button id="submit" class="bar btn waves-effect waves-light" type="submit" name="action">
+					<i class="material-icons">search</i>
+				</button>
+			</div> -->
+	</form>
+				<!-- <input id="cameraInput" type="file" accept="image/*" capture="camera"> -->
+</div>
+<input id="cameraInput" class="imgInput" type="file" accept="image/*">
+<!--=============================================-->
+	<!-- JS Links -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+	<script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
+	<script src="src/js/app.js"></script>
+</body>
+
+</html>
