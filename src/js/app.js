@@ -1,9 +1,3 @@
-// initiate app
-var app = new Clarifai.App(
-'cH840lgNLjvurqRG4raEvrBBb046a6o6MheCt0aL',
-'y45yaCVmc4xV8jhp2LjeqqXHgPLmcMUlYk2xkqDa'
-);
-
 var $h = $('html');
 
 var clar = {
