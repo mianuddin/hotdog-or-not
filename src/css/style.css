@@ -5,6 +5,7 @@ body {
 	max-height: 100vh;
 	max-width: 100vw;
 	background-color: rgba(67,67,67,1);
+	background-color: #fcfcfc;
 }
 .hidden {
 	display: none;
@@ -13,32 +14,107 @@ body {
 .row {
 	margin: 0;
 }
-
-h2#title,
-h2#result {
+.landing.blurb {
+	display: inline-block;
+	height: initial;
+	width: 80%;
+	line-height: initial;
+	margin-top: 10vh;
+}
+.headline {
 	font-weight: 900;
 	font-size: 6rem;
 	margin: 0;
 	height: initial;
-	line-height: 1em;
+	line-height: 0.9em;
+	letter-spacing: -2px;
 	display: inline-block;
 	color: #fff;
+	color: #111;
 	z-index: 200;
+}
+.landing.hotdog {
+	width: 60%;
+	height: initial;
+	max-height: 200px;
+	position: absolute;
+	bottom: 160px;
+	right: 24px;
+	margin-top: -100px;
+}
+.loading-icon {
+	width: 100%;
+	display: block;
+	position: fixed;
+	top: 50%;
+	margin-top: -30px;
+	left: 0;
+	background-image: url(../icons/hotdog-simple-circle-white.svg);
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+		/* aligns hotdog and loading icon*/
+		background-size: 88px;
+		padding-top: 5.5px;
+}
+.loading-icon .preloader-wrapper {
+	height: 100px;
+	width: 100px;
+}
+
+h2#title {
+	/*margin-bottom: 100px;*/
 }
 h2#result {
 	padding: 2rem 0;
 	text-transform: uppercase;
 	letter-spacing: -2px;
+	color: #fff;
 }
+.subheadline {
+	position: absolute;
+	bottom: 80px;
+	left: 0;
+	display: inline-block;
+	width: 100%;
+	padding: 0 10%;
+	height: initial;
+	line-height: initial;
+	margin: 0 auto;
+}
+.subheadline p {
+	font-size: 16px;
+	text-align: center;
+	color: #ddd;
+	color: #333;
+	font-weight: 300;
+	height: initial;
+	display: inline-block;
+	line-height: 1em;
+	width: 100%;
+	margin: 3px 0;
+}
+.subheadline p.alpha {
+	font-size: 24px;
+	color: #eee;
+	color: #222;
+	font-weight: 500;
+	letter-spacing: -0.5px;
+}
+@media all and (max-width: 500px){
+	h2#title {
+		/*margin-bottom: 40px;*/
+	}
 
+}
 /* Image Canvas */
 	.img-canvas {
 		height: 100vh;
-		line-height: 100vh;
+		/*line-height: 100vh;*/
 		text-align: center;
 		width: 100%;
 		background-color: #333;
-		background-color: rgba(24,24,24,0.81);
+		background-color: rgba(24,24,24,0.24);
+		background-color: transparent;
 		/*background-image: url('http://959thehawk.com/wp-content/uploads/2015/07/hotdog.jpg');*/
 		background-size: cover;
 		background-position: 50% 50%;
@@ -57,7 +133,7 @@ h2#result {
 		left: 0;
 		width: 100%;
 		margin: 0;
-		padding: 24px 0;
+		padding: 16px;
 		/*background-color: #fff;*/
 		background-color: rgba(24,24,24,0.81);
 		background-color: rgba(67,67,67,1);
@@ -173,3 +249,14 @@ h2#result {
 	.using-camera #file-field {
 		display: none;
 	}*/
+	
+	.on-air .landing {
+		display: none;
+	}
+
+	.loading-icon {
+		display: none;
+	}
+	.loading-icon.active {
+		display: block;
+	}

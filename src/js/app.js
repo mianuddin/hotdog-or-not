@@ -6,9 +6,13 @@ var clar = {
 	imageData: '',
 	appPredict: 
 			function(imageData){
+				$h.addClass('on-air');
+				var imageData = clar.imageData;
 				// predict the contents of an image by passing in a url
 				app.models.predict(Clarifai.FOOD_MODEL, imageData).then(
 				  function(response) {
+				  	$('.preloader-wrapper').removeClass('active');
+				  	$('.loading-icon').removeClass('active');
 				    console.log(response);
 				    clar.parseResponse(response);
 				  },
@@ -72,92 +76,84 @@ var clar = {
 					$h.attr('data-type','file');
 				}
 			}
-}
-function getLocalFile(){
-
-}
+};
 function reboot(){
 	// remove html result class
 	$h.removeClass('res-yes');
 	$h.removeClass('res-no');
 	$('#result').text('Hot Dog or Not Hot Dog?');
+};
+
+function removeLanding(){
+	$('.landing').hide();
 }
+
+
+
+// Get file
+$('#cameraInput').on('change', getFile);
+function getFile() {
+    // remove html result class
+    reboot();
+    console.log('get file input');
+
+    var file = document.getElementById('cameraInput').files[0];
+    var reader = new FileReader();
+
+    reader.addEventListener("load", function() {
+        var res = reader.result;
+        // console.log('reader.result', res);
+        $('.img-canvas').css('background-image', 'url("' + res + '")');
+        // Convert to base 64 for use in query. Important!!!!!
+        var b64 = res.replace(/^data:image\/(.*);base64,/, '');
+        clar.imageData = { base64: b64 };
+
+        // Submit button pulse
+        removeLanding();
+        $('#submit').addClass('pulse');
+    }, false);
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
+
 // Get image URL from HTML
-$('#submit').on('click',function(e){
-	e.preventDefault();
-	console.log('submitted');
+	$('#submit').on('click',function(e){
+		e.preventDefault();
+		console.log('submitted');
+		// remove pulse
+		$(this).removeClass('pulse');
 
-	// remove html result class
-	$h.removeClass('res-yes');
-	$h.removeClass('res-no');
-	var imageData;
+		// loading icon
+		$('.preloader-wrapper').addClass('active');
+	  	$('.loading-icon').addClass('active');
 
-	// Get selected input type
-	var itype = $h.attr('data-type');
-	if (itype === 'url'){
-		imageData = $('#url_in').val().trim();
-	}
-	else if (itype === 'file'){
-		imageData = $('file_in').val();
-		imageData = files[0];
-	}
-	else if (itype === 'camera'){
-		console.log('camera input val')
-	}
-	else {
-		// when empty?
-		return;
-	}
+		// remove html result class
+		$h.removeClass('res-yes');
+		$h.removeClass('res-no');
 
-	clar.useType = itype;
-	clar.imageData = imageData;
-	console.log('clar.useType',clar.useType);
-	console.log('clar.imageData',clar.imageData);
-	clar.appPredict(imageData);
-});
+		var imageData;
 
-$('#useCamera').on('click',function(e){
-	e.preventDefault();
-	$('#cameraInput').trigger('click');
-})
+		// Get selected input type
+		var itype = $h.attr('data-type');
+		if (itype === 'url'){
+			imageData = $('#url_in').val().trim();
+			clar.imageData = imageData;
+		}
+		else if (itype === 'camera'){
+			console.log('camera input val');
+		}
+		else {
+			// when empty?
+			return;
+		}
 
-
-// add some inputs
-// automatically tagged with general model?
-	// function appSearch(imageData){
-	// 	app.inputs.create(imageData).then(
-	// 	  searchForDog,
-	// 	  function(err) {
-	// 	    console.error(err);
-	// 	  }
-	// 	);
-	// 	// search for concepts
-	// 	function searchForDog(response) {
-	// 	  app.inputs.search({
-	// 	    concept: {
-	// 	      name: 'hotdog'
-	// 	    }
-	// 	  }).then(
-	// 	    function(response) {
-	// 	      console.log(response);
-	// 	    },
-	// 	    function(response) {
-	// 	      console.error(response);
-	// 	    }
-	// 	  );
-	// 	}
-	// }
-
-
-// $('#cameraInput').on('change', function(e) {
-//     $data = e.originalEvent.target.files[0];
-//     $reader = new FileReader();
-//     reader.onload = function(evt) {
-//         $('#your_img_id').attr('src', evt.target.result);
-//         reader.readAsDaraUrl($data);
-//     }
-// });
-
+		clar.useType = itype;
+		// console.log('clar.useType',clar.useType);
+		// console.log('clar.imageData',clar.imageData);
+		clar.appPredict();
+	});
 
 
 // Listeners //////////////////////////////////////////////////
@@ -171,18 +167,26 @@ $('.selectInputType').on('click',function(e){
 });
 
 
-// Update photo on change
+// Update photo on URL change
 $('#url_in').on('change',function(e){
 	e.preventDefault();
 	var imageData = $('#url_in').val();
 	// $('#query-img').attr('src',imageData);
 	$('.query.img-canvas').css('background-image','url('+ imageData +')');
 	clar.imageData = imageData;
-})
+});
 
 
 // Reset on any change
 $('.imgInput').on('change',function(e){
 	e.preventDefault();
 	reboot();
-})
+	removeLanding();
+});
+
+
+// Trigger offscreen click
+	$('#useCamera').on('click',function(e){
+		e.preventDefault();
+		$('#cameraInput').trigger('click');
+	});

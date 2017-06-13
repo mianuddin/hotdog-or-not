@@ -5,7 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="author" content="Wayne Cheng">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<link rel="icon" href="src/icons/hotdog-simple-circle-white.png">
+	<link rel="apple-touch-icon" sizes="300x300" href="src/icons/hotdog-square.png">
 	<!-- Google Font Links -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 	<!-- <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet"> -->
@@ -25,12 +26,36 @@
 <body>
 <!--=============================================-->
 <div class="row display result">
-	<h2 id="result"></h2>
+	<h2 id="result" class="headline"></h2>
 </div>
 
 <!--=============================================-->
 <div class="query img-canvas">
-	<h2 id="title">Hot Dog or Not?</h2>
+	<div class="landing blurb">
+		<h2 id="title" class="headline">Hot Dog or Not?</h2>
+	</div>
+	<img src="src/icons/hotdog.svg" alt="hotdog" class="landing hotdog">
+	<div class="subheadline landing">
+		<p class="alpha">Created by Wayne Cheng. </p>
+		<p>Inspired by HBO's Silicon Valley.</p>
+		<!-- <p>Powered by Clarifai.</p> -->
+	</div>
+	<div class="loading-icon">
+		<!-- <div class="preloader-wrapper big"> -->
+		<div class="preloader-wrapper big">
+			<div class="spinner-layer spinner-blue-only">
+				<div class="circle-clipper left">
+					<div class="circle"></div>
+				</div>
+				<div class="gap-patch">
+					<div class="circle"></div>
+				</div>
+				<div class="circle-clipper right">
+					<div class="circle"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <!--=============================================-->
 <div class="row form">
@@ -42,7 +67,7 @@
 				<label for="url_in">Image URL</label>
 			</div>
 		</div>
-		<div class="row">
+		<!-- <div class="row">
 			<div id="file-field" class="file-field input-field col s12 m8 offset-m2 l6 offset-l3">
 				<div class="btn">
 					<span>File</span>
@@ -52,14 +77,12 @@
 					<input id="file_path" class="imgInput file-path validate" type="text">
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<div class="row btn-row">
 			
-			 <a id="useCamera" class="selectInputType btn-round btn waves-effect waves-light selected" data-type="camera">
-			 	<i class="material-icons">camera_alt</i>
-			 	</a>
+			 <a id="useCamera" class="selectInputType btn-round btn waves-effect waves-light selected" data-type="camera"> <i class="material-icons">camera_alt</i> </a>
 			 <a id="useURL" class="selectInputType btn-round btn waves-effect waves-light" data-type="url"><i class="material-icons">link</i></a>
-			 <a id="useFile" class="selectInputType btn-round btn waves-effect waves-light" data-type="file"><i class="material-icons">image</i></a>
+			 <!-- <a id="useFile" class="selectInputType btn-round btn waves-effect waves-light" data-type="file"><i class="material-icons">image</i></a> -->
 			 <a id="submit" class="btn-round btn waves-effect waves-light"><i class="material-icons">send</i></a>
 		</div>
 			<!-- <div class="input-field col s2 offset-s5">
