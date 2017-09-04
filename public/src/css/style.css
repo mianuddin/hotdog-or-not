@@ -17,9 +17,13 @@ body {
 .landing.blurb {
 	display: inline-block;
 	height: initial;
-	width: 80%;
+	width: 100%;
 	line-height: initial;
-	margin-top: 10vh;
+	/* margin-top: 10vh; */
+	top: 20vh;
+	text-align: center;
+	margin: auto;
+	position: absolute;
 }
 .headline {
 	font-weight: 900;
@@ -52,6 +56,7 @@ body {
 	background-image: url(../icons/hotdog-simple-circle-white.svg);
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
+	text-align: center;
 		/* aligns hotdog and loading icon*/
 		background-size: 88px;
 		padding-top: 5.5px;
