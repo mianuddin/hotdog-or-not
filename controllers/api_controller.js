@@ -3,7 +3,6 @@
 	const express = require("express");
 	const router = express.Router();
 	const bodyParser = require("body-parser");
-	const hotdogModel = require('../models/hotdog.js');
 	const Clarifai = require('clarifai');
 	const app = new Clarifai.App({
 	 apiKey: process.env.CLARIFAI_API_KEY
