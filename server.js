@@ -32,6 +32,9 @@
 
 	// logs each url that is requested, then passes it on.
 	app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', '*');
+    res.header('Access-Control-Allow-Headers', '*');
 		console.log("url : " + req.url);
 		next();
 	});
@@ -46,7 +49,7 @@ app.use("/", routes);
 
 // ERRORS =========================================
   app.use(function(req, res) {
-    // res.type("text/html");
+    res.type("text/html");
     res.status(404);
     res.render("404");
   });
