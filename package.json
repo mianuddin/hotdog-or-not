@@ -1,7 +1,7 @@
 {
-  "name": "hotdog-or-not",
+  "name": "not-sely",
   "version": "1.0.0",
-  "description": "hotdog identification web app",
+  "description": "sely identification web app",
   "main": "server.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start karma.conf.js",
