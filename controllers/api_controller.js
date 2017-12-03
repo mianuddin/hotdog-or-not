@@ -7,48 +7,27 @@
 	const app = new Clarifai.App({
 	 apiKey: process.env.CLARIFAI_API_KEY
 	});
-	const wordBank = ['hotdog','hot dog'];
-//==================================================
 	router.post('/api/hotdog', function(req,res){
 		console.log('------------ POST /api/hotdog ----------->');
-		// console.log('req.body',req.body);
 		let imageData = req.body.data;
-		// if (req.body.url){
-		// 	imageData = req.body.url;
-		// }
-		// else {
-		// 	imageData = req.body;
-		// }
-		console.log('imageData',imageData);
-		
-		// predict the contents of an image by passing in a url
-		app.models.predict(Clarifai.FOOD_MODEL, imageData).then(
+		app.models.predict("notSely", imageData).then(
 			function(response) {
 				let { outputs } = response;				
 				let conc = outputs[0].data.concepts;
 				console.log('===> RESPONSE ====',conc);					
-					
-					for (var i=0; i<conc.length; i++) {
-						let ci = conc[i];
-						let certainty = ci.value;
-						let name = ci.name;
-						let iof = wordBank.indexOf(name);
-						
-						if (iof !== -1) {
-							res.json({ isHotDog: true })
-						}
-					};
-					res.json({ isHotDog: false })
+					const confid = conc[0].value;
+					if (confid > .7) {
+						res.json({ isHotDog: true });
+					} else {
+						res.json({ isHotDog: false });
+					}
 			},
 			function(err) {
-				console.log('===> ERROR ====', err.status, err.statusText);
+				console.log('===> ERROR ====', err.status, err.statusText, err);
 				res.json({ error: true })
 			}
 		);
 	})
 
-
-//==================================================
-	module.exports = router; // Export routes for server.js to use.
-////////////////////////////////////////////////////
+	module.exports = router;
 })();
