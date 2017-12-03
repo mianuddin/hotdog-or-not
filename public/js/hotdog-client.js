@@ -81,12 +81,12 @@ var client = {
 	},
 	isHotDog: function() {
 		console.log("------IS A HOT DOG!------");
-		$("#result").text("Hot Dog");
+		$("#result").text("Sely");
 		$h.addClass("res-yes");
 	},
 	isNotHotDog: function() {
 		console.log("not a hot dog");
-		$("#result").text("Not a Hot Dog");
+		$("#result").text("Not Sely");
 		$h.addClass("res-no");
 	},
 	isError: function() {
