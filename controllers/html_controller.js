@@ -8,7 +8,7 @@
 	router.get("/", function(req, res) {
 		// res.redirect('/under-construction');
 		res.render('hotdog', {
-			title: 'Hotdog or Not? - Wayne C.'
+			title: 'notSely'
 		})
 	});
 
